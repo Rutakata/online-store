@@ -1,0 +1,25 @@
+// import { useEffect, useState } from "react";
+// import { getAuth, signInWithPopup } from "firebase/auth";
+// import { app, googleAuthProvider } from "./firebase";
+
+
+// export const AuthProvider = () => {
+//     const auth = getAuth(app);
+//     const [user, setUser] = useState(auth.currentUser);
+
+//     useEffect(() => {
+//         const unsubscribe = auth.onAuthStateChanged((maybeUser) => {
+//             if (maybeUser != null) {
+//                 return setUser(maybeUser);
+//             }
+            
+//             signInWithPopup(auth, googleAuthProvider)
+//             .then(credentials => setUser(credentials.user))
+//             .catch(err => console.log(err));
+//         })
+
+//         return unsubscribe;
+//     }, [auth ])
+
+//     return user !== null ? <>{user.displayName}</> : <>Loading...</>
+// }
