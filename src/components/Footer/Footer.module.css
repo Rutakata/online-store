@@ -1,0 +1,19 @@
+.wrapper {
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    color: #000;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+.wrapper__socials {
+    display: flex;
+    list-style-type: none;
+    gap: 10px;
+}
+.wrapper__socials__item {
+    display: block;
+}

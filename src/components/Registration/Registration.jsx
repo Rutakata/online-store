@@ -44,7 +44,7 @@ const Registration = () => {
                 setEmail('');
                 setPassword('');
                 setConfirmPassword('');
-                navigate('/signin');
+                navigate('/home');
             }catch (err){
                 setError("Failed to sign up");
             }

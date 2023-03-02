@@ -24,7 +24,7 @@ const Authorization = () => {
             await logIn(email, password);
             setEmail('');
             setPassword('');
-            navigate('/');
+            navigate('/home');
         }catch (err) {
             setError('Failed to sign in');
         }
@@ -44,7 +44,7 @@ const Authorization = () => {
             <input type="submit" className={style.loginizationForm__submitButton} value="Sign in" disabled={loading}/>
         </form>
 
-        <p>Don't have account? You can <Link>sign up</Link></p>
+        <p>Don't have account? You can <Link to='/signup'>sign up</Link></p>
         {error ? <p className={style.loginizationForm__errorMessage}>{error}</p> : null}
     </div>
 }

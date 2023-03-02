@@ -1,0 +1,33 @@
+.wrapper, .wrapper_hidden {
+    background-color: #fff;
+    height: 70px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+    font-size: 18px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: .2s;
+}
+.wrapper_hidden {
+    top: -71px;
+    transition: .2s;
+}
+.wrapper__logo {
+    font-size: 26px;
+    font-weight: 600;
+}
+.wrapper__navigation {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    font-size: 20px;
+    gap: 40px;
+}
+.wrapper__navigation__item {
+    display: block;
+}
