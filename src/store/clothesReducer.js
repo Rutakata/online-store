@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ref, orderByChild, get } from "firebase/database";
+import { act } from "react-dom/test-utils";
 import { database } from "../firebase";
 
 const clothesRef = ref(database, 'clothes');
@@ -33,7 +34,6 @@ export const clothesSlice = createSlice({
             .addCase(getAllClothes.fulfilled, (state, action) => {
                 state.clothes = action.payload;
                 state.isLoading = false;
-                console.log(state.clothes);
             })
             .addCase(getAllClothes.rejected, (state, action) => {
                 state.error = action.error.message;

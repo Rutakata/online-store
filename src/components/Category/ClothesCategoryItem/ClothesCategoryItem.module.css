@@ -1,0 +1,40 @@
+.wrapper {
+    width: 250px;
+    height: 400px;
+    box-shadow: 2px 2px 5px grey;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    padding: 10px;
+    font-size: 18px;
+}
+.wrapper__clothesName {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+.wrapper__image {
+    min-height: 250px;
+    max-height: 250px;
+    overflow: hidden;
+}
+.wrapper__price {
+    margin-bottom: auto;
+}
+.wrapper__detailsButton {
+    height: 30px;
+    background-color: black;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+    margin-top: auto;
+    text-align: center;
+    text-decoration: none;
+    line-height: 25px;
+}
+.wrapper__detailsButton:hover {
+    background-color: #fff;
+    border: 1px solid black;
+    color: #000;
+}

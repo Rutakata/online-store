@@ -7,7 +7,8 @@ import Header from './components/Header/Header';
 import Home from './components/Home/Home';
 import style from './App.module.css';
 import Footer from './components/Footer/Footer';
-import ClothesCategory from './components/Clothes/ClothesCategory';
+import ClothesCategory from './components/Category/ClothesCategory';
+import ClothesDetailsContainer from './components/ClothesDetails/ClothesDetailsContainer';
 
 function App() {
   return <div className={style.app}>
@@ -20,6 +21,7 @@ function App() {
           <Route path='/signin' element={<Authorization />} /> 
           <Route path='/signup' element={<Registration />} />
           <Route path='/category/:type' element={<ClothesCategory />} />
+          <Route path='/product/:id' element={<ClothesDetailsContainer />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
