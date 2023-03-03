@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 // import { getAnalytics } from "firebase/analytics";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { getAuth } from "firebase/auth";
+import { getDatabase } from "firebase/database";
 // const REACT_APP_FIREBASE_KEY = import.meta.env.REACT_APP_FIREBASE_KEY;
 // const REACT_APP_FIREBASE_DOMAIN = import.meta.env.REACT_APP_FIREBASE_DOMAIN; 
 // const REACT_APP_FIREBASE_PROJECT_ID = import.meta.env.REACT_APP_FIREBASE_PROJECT_ID; 
@@ -16,10 +17,12 @@ const firebaseConfig = {
   storageBucket: "online-store-9a748.appspot.com",
   messagingSenderId: "1071265698480",
   appId: "1:1071265698480:web:e7ecab0dc4767a43efe175",
-  measurementId: "G-S5M17V4RHY"
+  measurementId: "G-S5M17V4RHY",
+  databaseURL: "https://online-store-9a748-default-rtdb.europe-west1.firebasedatabase.app",
 };
 
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const database = getDatabase(app);
 // const analytics = getAnalytics(app);
 // export const googleAuthProvider = new GoogleAuthProvider(); 

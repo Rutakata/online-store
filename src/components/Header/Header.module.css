@@ -30,4 +30,6 @@
 }
 .wrapper__navigation__item {
     display: block;
+    text-decoration: none;
+    color: #000;
 }

@@ -1,9 +1,13 @@
-.app {
-    position: relative;
-    padding-top: 70px;
-}
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+.app {
+    position: relative;
+    padding-top: 70px;
+}
+.container {
+    width: 80%;
+    margin: 40px auto;
 }

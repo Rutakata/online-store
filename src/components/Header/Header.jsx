@@ -3,6 +3,7 @@ import { CgProfile } from "react-icons/cg";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
+import { Link } from "react-router-dom";
 import style from "./Header.module.css";
 
 
@@ -36,9 +37,9 @@ const NavBar = () => {
         <nav className={show ? `${style.wrapper}`: `${style.wrapper} ${style.wrapper_hidden}`}>
             <div className={style.wrapper__logo} onClick={handleLogo}>LOGO</div>
             <ul className={style.wrapper__navigation}>   
-                <li className="wrapper__navigation__item">All</li>
-                <li className="wrapper__navigation__item">Men</li>
-                <li className="wrapper__navigation__item">Women</li>
+                <Link to={`/category/all`} className={style.wrapper__navigation__item}><li>All</li></Link>
+                <Link to={`/category/man`} className={style.wrapper__navigation__item}><li>Men</li></Link>
+                <Link to={`/category/woman`} className={style.wrapper__navigation__item}><li>Women</li></Link>
             </ul>
             <div>
                 <CgProfile size={30} onClick={() => currentUser ? navigate('/profile') : navigate('/signin')}/>
