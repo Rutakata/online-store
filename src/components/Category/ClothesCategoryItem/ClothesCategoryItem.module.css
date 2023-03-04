@@ -1,12 +1,16 @@
 .wrapper {
     width: 250px;
     height: 400px;
-    box-shadow: 2px 2px 5px grey;
     display: flex;
     flex-direction: column;
     row-gap: 10px;
     padding: 10px;
     font-size: 18px;
+    text-decoration: none;
+    color: #000;
+}
+.wrapper:hover {
+    box-shadow: 2px 2px 10px grey;
 }
 .wrapper__clothesName {
     margin: 0;

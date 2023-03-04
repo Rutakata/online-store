@@ -1,0 +1,27 @@
+.bannerContainer {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 300px;
+    padding: 30px 40px;
+    background-color: rgb(193, 193, 193);
+    overflow: hidden;
+    position: relative;
+}
+.bannerContainer__callText {
+    font-size: 40px;
+}
+.bannerContainer__image, .bannerContainer__image2 {
+    position: absolute;
+    top: -40px;
+    right: 40px;
+    transform: rotate(10deg);
+    height: 500px;
+    z-index: 10;
+}
+.bannerContainer__image2 {
+    transform: rotate(25deg);
+    z-index: 12;
+    height: 400px;
+    top: 0px;
+}

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import ImagesItem from "./ImagesItem";
+import AddToCartButton from "./AddToCartButton/AddToCartButton";
 import style from "./ClothesDetails.module.css";
 
 
-const ClothesDetails = ({clothesData}) => {
+const ClothesDetails = ({clothesData, checkAuthorization}) => {
     const [currentImage, setCurrentImage] = useState(clothesData.images[0])
 
     console.log(clothesData);
@@ -23,6 +24,9 @@ const ClothesDetails = ({clothesData}) => {
             <p>Made of {clothesData.material}</p>
             <p>Produced by {clothesData.company}</p>
             <div className={style.container__clothesInfo__params}>
+                For: {clothesData.sex.map(sex => <span>{sex} </span>)}
+            </div>
+            <div className={style.container__clothesInfo__params}>
                 Colors: {clothesData.colors.map(color => <div 
                                                     className={style.container__clothesInfo__params_item} 
                                                     style={{backgroundColor: "#"+color}}></div>)}
@@ -30,7 +34,13 @@ const ClothesDetails = ({clothesData}) => {
             <div className={style.container__clothesInfo__params}>
                 Sizes: {clothesData.sizes.map(size => <div className={style.container__clothesInfo__params_item}>{size}</div>)}
             </div>
-            <div>Can wear: {clothesData.sex.map(sex => <span>{sex}</span>)}</div>
+            {/* <button className={clothesData.inStock ? 
+                                style.container__clothesInfo__addToCart : 
+                                style.container__clothesInfo__addToCart_disabled } 
+                    onClick={checkAuthorization} disabled={!clothesData.inStock}>
+                {clothesData.inStock ? "Add to cart" : "Not available now"}
+            </button> */}
+            <AddToCartButton inStock={clothesData.inStock} checkAuthorization={checkAuthorization}/>
         </div>
     </div>
 }

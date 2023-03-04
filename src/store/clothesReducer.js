@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ref, orderByChild, get } from "firebase/database";
-import { act } from "react-dom/test-utils";
 import { database } from "../firebase";
 
 const clothesRef = ref(database, 'clothes');
@@ -42,13 +41,13 @@ export const clothesSlice = createSlice({
     }
 })
 
-export const getAllClothes = createAsyncThunk('clothes/getAllClothes', async() => {
-    let clothes = []
+export const getAllClothes = createAsyncThunk('clothes/getAllClothes', async(type) => {
     let snapshot = await get(clothesRef);
-    snapshot.forEach(childSnapshot => {
-        clothes.push(childSnapshot.val());
-    })
-    return clothes;
+    if (type === 'all') {
+        return snapshot.val();
+    }
+    let filteredClothes = snapshot.val().filter(childSnapshot => childSnapshot.sex.includes(type.charAt(0).toUpperCase() + type.slice(1)));
+    return filteredClothes;
 })
 
 export default clothesSlice.reducer;

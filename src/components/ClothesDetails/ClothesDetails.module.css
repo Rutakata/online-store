@@ -24,14 +24,15 @@
 .container__clothesInfo {
     flex: 6;
     font-size: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 .container__clothesInfo__name {
     font-size: 40px;
-    margin-bottom: 10px;
 }
 .container__clothesInfo__price {
     font-size: 26px;
-    margin-bottom: 10px;
 }
 .container__clothesInfo__price span {
     font-weight: 600;
@@ -40,7 +41,6 @@
     display: flex;
     height: 30px;
     gap: 10px;
-    margin-top: 10px;
 }
 .container__clothesInfo__params_item {
     height: 30px;
@@ -49,4 +49,28 @@
     text-align: center;
     line-height: 30px;
     font-size: 18px;
+}
+.container__clothesInfo__addToCart {
+    width: 300px;
+    height: 50px;
+    background-color: black;
+    color: white;
+    line-height: 40px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+.container__clothesInfo__addToCart:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+}
+.container__clothesInfo__addToCart_disabled {
+    background-color: rgb(165, 165, 165);
+    color: #000;
+    width: 300px;
+    height: 50px;
+    line-height: 40px;
+    font-size: 20px;
+    border: none;
+    margin-top: 20px;
 }

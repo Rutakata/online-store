@@ -1,19 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ClothesCategoryItem from "./ClothesCategoryItem/ClothesCategoryItem";
-import { useDispatch, useSelector } from "react-redux";
-import { getAllClothes } from "../../store/clothesReducer";
-import style from "./ClothesCategory.module.css";
 import FilterContainer from "./Filter/FilterContainer";
+import style from "./ClothesCategory.module.css";
 
 
-const ClothesCategory = () => {
-    const dispatch = useDispatch();
-    const { clothes, isLoading } = useSelector(state => state.clothesReducer);
-
-    useEffect(() => {
-        dispatch(getAllClothes());
-    }, [dispatch]);
-
+const ClothesCategory = ({clothes, isLoading}) => {
     return <div className={style.container}>
         <FilterContainer className={style.container__filterWrapper} />
         {!isLoading ? 
