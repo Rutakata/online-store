@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ref, orderByChild, get } from "firebase/database";
+import { ref, once, query, equalTo, get } from "firebase/database";
 import { database } from "../firebase";
 
 const clothesRef = ref(database, 'clothes');
@@ -21,7 +21,7 @@ export const currentClothesSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(getClothesById.fulfilled, (state, action) => {
-                state.currentClothes = action.payload;
+                state.clothesData = action.payload;
                 state.isLoading = false;
             })
             .addCase(getClothesById.rejected, (state, action) => {
@@ -31,12 +31,11 @@ export const currentClothesSlice = createSlice({
     }
 })
 
-export const getClothesById = createAsyncThunk('currentClothes/getClothesById', async(id) => {
-    console.log('test');
-    const query = orderByChild('clothes/id').equalTo(id);
-    let currentClothes = await get(query);
-    console.log(currentClothes.val());
-    return currentClothes.val();
+export const getClothesById = createAsyncThunk('currentClothes/getClothesById', async (id) => {
+    const snapshot = await get(clothesRef)
+    let currentClothes = snapshot.val().filter((item) => item.id === id);
+
+    return currentClothes[0];
 })
 
 export default currentClothesSlice.reducer;

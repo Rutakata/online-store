@@ -15,7 +15,7 @@ const ClothesDetailsContainer = () => {
         dispatch(getClothesById(params.id));
     }, [dispatch])
 
-    return !isLoading ? 
+    return !isLoading && clothesData !== null ? 
             <ClothesDetails clothesData={clothesData} />
             : <div>Loading...</div>
 }

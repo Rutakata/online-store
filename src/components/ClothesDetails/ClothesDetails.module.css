@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    gap: 40px;
+}
+.container__images {
+    flex: 4;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.container__images__currentImage {
+    width: 100%;
+}
+.container__images__otherImages {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+}
+.container__images__otherImages_item {
+    height: 100%;
+}
+.container__clothesInfo {
+    flex: 6;
+    font-size: 22px;
+}
+.container__clothesInfo__name {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+.container__clothesInfo__price {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+.container__clothesInfo__price span {
+    font-weight: 600;
+}
+.container__clothesInfo__params {
+    display: flex;
+    height: 30px;
+    gap: 10px;
+    margin-top: 10px;
+}
+.container__clothesInfo__params_item {
+    height: 30px;
+    width: 30px;
+    border: 1px solid black;
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+}
