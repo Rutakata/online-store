@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ref, once, query, equalTo, get } from "firebase/database";
+import { ref, get } from "firebase/database";
 import { database } from "../firebase";
 
 const clothesRef = ref(database, 'clothes');
@@ -14,7 +14,11 @@ const initialState = {
 export const currentClothesSlice = createSlice({
     name: 'currentClothes', 
     initialState, 
-    reducers: {},
+    reducers: {
+        setParam(state, action) {
+            state.params[action.payload.param] = action.payload.value;     
+        }
+    },
     extraReducers: (builder) => {
         builder
             .addCase(getClothesById.pending, (state) => {
@@ -22,6 +26,8 @@ export const currentClothesSlice = createSlice({
             })
             .addCase(getClothesById.fulfilled, (state, action) => {
                 state.clothesData = action.payload;
+                state.params.color = action.payload.colors[0];
+                state.params.size = action.payload.sizes[0];
                 state.isLoading = false;
             })
             .addCase(getClothesById.rejected, (state, action) => {

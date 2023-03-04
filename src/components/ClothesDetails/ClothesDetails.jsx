@@ -5,7 +5,7 @@ import style from "./ClothesDetails.module.css";
 
 
 const ClothesDetails = ({clothesData, checkAuthorization}) => {
-    const [currentImage, setCurrentImage] = useState(clothesData.images[0])
+    const [currentImage, setCurrentImage] = useState(clothesData.images[0]);
 
     console.log(clothesData);
     return <div className={style.container}>
@@ -34,12 +34,6 @@ const ClothesDetails = ({clothesData, checkAuthorization}) => {
             <div className={style.container__clothesInfo__params}>
                 Sizes: {clothesData.sizes.map(size => <div className={style.container__clothesInfo__params_item}>{size}</div>)}
             </div>
-            {/* <button className={clothesData.inStock ? 
-                                style.container__clothesInfo__addToCart : 
-                                style.container__clothesInfo__addToCart_disabled } 
-                    onClick={checkAuthorization} disabled={!clothesData.inStock}>
-                {clothesData.inStock ? "Add to cart" : "Not available now"}
-            </button> */}
             <AddToCartButton inStock={clothesData.inStock} checkAuthorization={checkAuthorization}/>
         </div>
     </div>

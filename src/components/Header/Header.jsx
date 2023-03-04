@@ -14,6 +14,7 @@ const NavBar = () => {
     const { currentUser } = useAuth();
     
     useEffect(() => {
+        console.log(currentUser);
         window.addEventListener('scroll', controlNavBar);
         return () => window.removeEventListener('scroll', controlNavBar);
     })
@@ -41,8 +42,12 @@ const NavBar = () => {
                 <Link to={`/category/man`} className={style.wrapper__navigation__item}><li>Men</li></Link>
                 <Link to={`/category/woman`} className={style.wrapper__navigation__item}><li>Women</li></Link>
             </ul>
-            <div>
-                <CgProfile size={30} onClick={() => currentUser ? navigate('/profile') : navigate('/signin')}/>
+            <div style={{display: "flex", gap: "20px", alignItems: "center"}}>
+                {
+                    currentUser && currentUser.photoURL ? 
+                    <img src={currentUser.photoURL} alt='User avatar' className={style.wrapper__navigation__userAvatar} />:
+                    <CgProfile size={40} onClick={() => currentUser ? navigate('/profile') : navigate('/signin')} />
+                }
                 <AiOutlineShoppingCart size={30} />
             </div>
         </nav>

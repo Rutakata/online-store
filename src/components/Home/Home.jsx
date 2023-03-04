@@ -1,4 +1,7 @@
 import React from "react";
+import { FaShippingFast } from "react-icons/fa";
+import { ImPriceTags } from "react-icons/im";
+import { GiClothes } from "react-icons/gi";
 import style from "./Home.module.css";
 
 
@@ -10,6 +13,20 @@ const Home = () => {
             <p className={style.bannerContainer__callText}>The best quality!</p>
             <img src={banner} alt='banner' className={style.bannerContainer__image} />
             <img src={banner2} alt="banner2" className={style.bannerContainer__image2} />
+        </div>
+        <div className={style.advantages}>
+            <div className={style.advantages__item}>
+                <FaShippingFast size={50}/>
+                <span>Fast shipping</span>
+            </div>
+            <div className={style.advantages__item}>
+                <ImPriceTags size={50} />
+                <span>Low prices</span>
+            </div>
+            <div className={style.advantages__item}>
+                <GiClothes size={50} />
+                <span>Huge choice</span>
+            </div>
         </div>
     </div>
 }
