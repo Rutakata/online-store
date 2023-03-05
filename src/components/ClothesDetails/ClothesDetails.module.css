@@ -50,6 +50,14 @@
     line-height: 30px;
     font-size: 18px;
 }
+.container__clothesInfo__params_item_active {
+    height: 30px;
+    width: 30px;
+    border: 1px solid rgb(225, 51, 51);
+    text-align: center;
+    line-height: 30px;
+    font-size: 18px;
+}
 .container__clothesInfo__addToCart {
     width: 300px;
     height: 50px;

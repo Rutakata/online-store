@@ -8,16 +8,15 @@ import ClothesDetails from "./ClothesDetails";
 
 
 const ClothesDetailsContainer = () => {
-    const { clothesData, isLoading } = useSelector(state => state.currentClothesReducer);
+    const { clothesData, isLoading, params } = useSelector(state => state.currentClothesReducer);
     const dispatch = useDispatch();
-    const params = useParams();
+    const param = useParams();
     const { currentUser } = useAuth();
     const [isShown, setIsShown] = useState(false);
 
     useEffect(() => {
-        console.log(params);
-        dispatch(getClothesById(params.id));
-    }, [dispatch])
+        dispatch(getClothesById(param.id));
+    }, [dispatch, param.id])
 
     const checkAuthorization = () => {
         if (!currentUser) {
@@ -30,7 +29,7 @@ const ClothesDetailsContainer = () => {
 
     return !isLoading && clothesData !== null ? 
             <>
-                <ClothesDetails clothesData={clothesData} checkAuthorization={checkAuthorization} />
+                <ClothesDetails clothesData={clothesData} checkAuthorization={checkAuthorization} params={params} />
                 <AuthorizationPopup isShown={isShown} handlePopup={handlePopup} />
             </>
             : <div>Loading...</div>

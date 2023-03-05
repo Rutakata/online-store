@@ -14,7 +14,6 @@ const NavBar = () => {
     const { currentUser } = useAuth();
     
     useEffect(() => {
-        console.log(currentUser);
         window.addEventListener('scroll', controlNavBar);
         return () => window.removeEventListener('scroll', controlNavBar);
     })

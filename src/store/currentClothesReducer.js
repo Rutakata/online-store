@@ -6,7 +6,7 @@ const clothesRef = ref(database, 'clothes');
 
 const initialState = {
     clothesData: null,
-    params: {},
+    params: {color: "#fff", size: "M"},
     isLoading: false,
     error: null
 }
@@ -16,7 +16,8 @@ export const currentClothesSlice = createSlice({
     initialState, 
     reducers: {
         setParam(state, action) {
-            state.params[action.payload.param] = action.payload.value;     
+            state.params[action.payload.param] = action.payload.value;
+            console.log(action.payload);    
         }
     },
     extraReducers: (builder) => {
@@ -25,9 +26,9 @@ export const currentClothesSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(getClothesById.fulfilled, (state, action) => {
-                state.clothesData = action.payload;
                 state.params.color = action.payload.colors[0];
                 state.params.size = action.payload.sizes[0];
+                state.clothesData = action.payload;
                 state.isLoading = false;
             })
             .addCase(getClothesById.rejected, (state, action) => {
@@ -44,4 +45,6 @@ export const getClothesById = createAsyncThunk('currentClothes/getClothesById', 
     return currentClothes[0];
 })
 
+
+export const {setParam} = currentClothesSlice.actions;
 export default currentClothesSlice.reducer;

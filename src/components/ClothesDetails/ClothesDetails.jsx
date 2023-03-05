@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import ImagesItem from "./ImagesItem";
 import AddToCartButton from "./AddToCartButton/AddToCartButton";
+import ParamsItem from "./ParamsItem/ParamsItem";
+import { setParam } from "../../store/currentClothesReducer";
+import { useDispatch } from "react-redux";
 import style from "./ClothesDetails.module.css";
 
 
-const ClothesDetails = ({clothesData, checkAuthorization}) => {
+const ClothesDetails = ({clothesData, checkAuthorization, params}) => {
     const [currentImage, setCurrentImage] = useState(clothesData.images[0]);
+    const dispatch = useDispatch();
 
-    console.log(clothesData);
+    const handleParamChange = (param, value) => {
+        dispatch(setParam({param, value}));
+    }
+
     return <div className={style.container}>
         <div className={style.container__images}>
             <img src={currentImage} alt={clothesData.name} className={style.container__images__currentImage} />
@@ -15,7 +22,8 @@ const ClothesDetails = ({clothesData, checkAuthorization}) => {
                 {clothesData.images.map(image => <ImagesItem link={image} 
                                                         className={style.container__images__otherImages_item}  
                                                         name={clothesData.name}
-                                                        setCurrentImage={setCurrentImage} />)}
+                                                        setCurrentImage={setCurrentImage} 
+                                                        key={image} />)}
             </div>
         </div>
         <div className={style.container__clothesInfo}>
@@ -24,15 +32,25 @@ const ClothesDetails = ({clothesData, checkAuthorization}) => {
             <p>Made of {clothesData.material}</p>
             <p>Produced by {clothesData.company}</p>
             <div className={style.container__clothesInfo__params}>
-                For: {clothesData.sex.map(sex => <span>{sex} </span>)}
+                For: {clothesData.sex.map(sex => <span key={sex}>{sex} </span>)}
             </div>
             <div className={style.container__clothesInfo__params}>
-                Colors: {clothesData.colors.map(color => <div 
-                                                    className={style.container__clothesInfo__params_item} 
-                                                    style={{backgroundColor: "#"+color}}></div>)}
+                Colors: {clothesData.colors.map(color => <ParamsItem param='color' 
+                                                                    value={color} 
+                                                                    key={color} 
+                                                                    handleParamChange={handleParamChange}
+                                                                    classType={params.color === color ? 
+                                                                        'container__clothesInfo__params_item_active' :
+                                                                        'container__clothesInfo__params_item'} />)}
             </div>
             <div className={style.container__clothesInfo__params}>
-                Sizes: {clothesData.sizes.map(size => <div className={style.container__clothesInfo__params_item}>{size}</div>)}
+                Sizes: {clothesData.sizes.map(size => <ParamsItem param='size' 
+                                                                  value={size} 
+                                                                  key={size} 
+                                                                  handleParamChange={handleParamChange}
+                                                                  classType={params.size === size ? 
+                                                                    'container__clothesInfo__params_item_active' :
+                                                                    'container__clothesInfo__params_item'}>{size}</ParamsItem>)}
             </div>
             <AddToCartButton inStock={clothesData.inStock} checkAuthorization={checkAuthorization}/>
         </div>
