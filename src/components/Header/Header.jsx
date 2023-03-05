@@ -52,7 +52,7 @@ const NavBar = () => {
                          onClick={handleAvatar}/>:
                     <CgProfile size={40} onClick={handleAvatar} />
                 }
-                <Link to='/cart'>
+                <Link to='/cart' className={style.wrapper__navigation__cartIcon}>
                     <AiOutlineShoppingCart size={30} />
                 </Link>
             </div>

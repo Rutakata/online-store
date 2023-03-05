@@ -1,13 +1,33 @@
 .container {
     flex: 2;
     max-width: 250px;
-    max-height: 500px;
-    box-shadow: 2px 2px 5px grey;
-    border-radius: 10px;
-    padding: 10px;
+    max-height: 450px;
+    padding: 20px;
+}
+.container:hover {
+    box-shadow: 2px 2px 7px grey;
 }
 .container__header {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+}
+.container__filter {
+    display: flex;
+    gap: 10px;
+    row-gap: 5px;
+    flex-wrap: wrap;
+    margin: 5px 0 10px;
+}
+.container__filter_item {
+    border: 1px solid black;
+    padding: 0 5px 2px;
+    border-radius: 3px;
+    display: inline-block;
+    width: fit-content;
+    cursor: pointer;
+}
+.container__filter_item:hover {
+    background-color: black;
+    color: white;
 }

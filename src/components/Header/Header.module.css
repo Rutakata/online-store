@@ -42,3 +42,7 @@
     border-radius: 50%;
     margin: 0;
 }
+.wrapper__navigation__cartIcon {
+    color: #000;
+    text-decoration: none;
+}

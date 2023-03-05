@@ -4,10 +4,6 @@ import style from "./CartItem.module.css";
 
 
 const CartItem = ({cartItemData}) => {
-    useEffect(() => {
-        console.log(cartItemData);
-    }, [])
-
     return cartItemData.data ? 
     <div className={style.container}>
         <div className={style.container__imageWrapper}>
