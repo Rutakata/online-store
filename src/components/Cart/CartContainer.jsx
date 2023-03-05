@@ -5,14 +5,14 @@ import Cart from "./Cart";
 
 
 const CartContainer = () => {
-    const { cartItems } = useSelector(state => state.cartReducer);
+    const { cartItems, isLoading } = useSelector(state => state.cartReducer);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getCartItemsInfo(cartItems))
+        dispatch(getCartItemsInfo(cartItems));
     }, [dispatch])
 
-    return <Cart cartItems={cartItems} />
+    return !isLoading ? <Cart cartItems={cartItems} /> : <div>Loading...</div>
 }
 
 export default CartContainer;

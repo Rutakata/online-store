@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    height: 200px;
+    width: 100%;
+    gap: 30px;
+}
+.container__imageWrapper {
+    height: 200px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+.container__imageWrapper_image {
+    height: 200px;
+    margin: 0 auto;
+}
+.container__clothesInfo {
+    flex: 3;
+    padding-left: 20px;
+    border-left: 1px solid #000;
+}
+.container__clothesInfo__name {
+    font-size: 26px;
+}
+.container__clothesInfo__material, .container__clothesInfo__company {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.container__params {
+    flex: 1;
+    display: flex;
+    gap: 20px;
+}
+.container__params_item {
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    background-color: #fff;
+    color: #000;
+}
+
+.container__price {
+    flex: 1;
+    font-size: 24px;
+}

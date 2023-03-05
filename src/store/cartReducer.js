@@ -23,10 +23,10 @@ export const cartSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(getCartItemsInfo.fulfilled, (state, action) => {
-                state.isLoading = false;
                 Object.keys(action.payload).map(key => {
                     state.cartItems[key] = {data: action.payload[key], params: state.cartItems[key].params, count: 1};
                 })
+                state.isLoading = false;
             })
             .addCase(getCartItemsInfo.rejected, (state) => {
                 state.isLoading = false;

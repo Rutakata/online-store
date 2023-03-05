@@ -33,6 +33,10 @@ const NavBar = () => {
         navigate('/home');
     }
 
+    const handleAvatar = () => {
+        currentUser ? navigate('/profile') : navigate('/signin')
+    }
+
     return (
         <nav className={show ? `${style.wrapper}`: `${style.wrapper} ${style.wrapper_hidden}`}>
             <div className={style.wrapper__logo} onClick={handleLogo}>LOGO</div>
@@ -44,8 +48,9 @@ const NavBar = () => {
             <div style={{display: "flex", gap: "20px", alignItems: "center"}}>
                 {
                     currentUser && currentUser.photoURL ? 
-                    <img src={currentUser.photoURL} alt='User avatar' className={style.wrapper__navigation__userAvatar} />:
-                    <CgProfile size={40} onClick={() => currentUser ? navigate('/profile') : navigate('/signin')} />
+                    <img src={currentUser.photoURL} alt='User avatar' className={style.wrapper__navigation__userAvatar} 
+                         onClick={handleAvatar}/>:
+                    <CgProfile size={40} onClick={handleAvatar} />
                 }
                 <Link to='/cart'>
                     <AiOutlineShoppingCart size={30} />
