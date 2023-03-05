@@ -47,11 +47,6 @@ export const getAllClothes = createAsyncThunk('clothes/getAllClothes', async(typ
     if (type === 'all') {
         return snapshot.val();
     }
-    // let filteredClothes = snapshot.val().forEach(childSnapshot => {
-    //     if (childSnapshot.sex.includes(type.charAt(0).toUpperCase() + type.slice(1))){
-    //         return childSnapshot;
-    //     }
-    // });
     let filteredClothes = {} 
     for (let child in snapshot.val()) {
         if (snapshot.val()[child].sex.includes(type.charAt(0).toUpperCase() + type.slice(1))){

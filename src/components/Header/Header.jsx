@@ -47,7 +47,9 @@ const NavBar = () => {
                     <img src={currentUser.photoURL} alt='User avatar' className={style.wrapper__navigation__userAvatar} />:
                     <CgProfile size={40} onClick={() => currentUser ? navigate('/profile') : navigate('/signin')} />
                 }
-                <AiOutlineShoppingCart size={30} />
+                <Link to='/cart'>
+                    <AiOutlineShoppingCart size={30} />
+                </Link>
             </div>
         </nav>
     )

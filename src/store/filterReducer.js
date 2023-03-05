@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ref, orderByChild, get } from "firebase/database";
+import { ref, get } from "firebase/database";
 import { database } from "../firebase";
 
 const companiesRef = ref(database, 'companies');

@@ -9,6 +9,7 @@ import style from './App.module.css';
 import Footer from './components/Footer/Footer';
 import ClothesDetailsContainer from './components/ClothesDetails/ClothesDetailsContainer';
 import ClothesCategoryContainer from './components/Category/ClothesCategoryContainer';
+import CartContainer from './components/Cart/CartContainer';
 
 function App() {
   return <div className={style.app}>
@@ -22,6 +23,7 @@ function App() {
           <Route path='/signup' element={<Registration />} />
           <Route path='/category/:type' element={<ClothesCategoryContainer />} />
           <Route path='/product/:id' element={<ClothesDetailsContainer />} />
+          <Route path='/cart' element={<CartContainer />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>

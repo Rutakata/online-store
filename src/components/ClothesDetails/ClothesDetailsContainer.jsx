@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { getClothesById } from "../../store/currentClothesReducer";
+import { addToCart } from "../../store/cartReducer";
 import AuthorizationPopup from "./AuthorizationPopup/AuthorizationPopup";
 import ClothesDetails from "./ClothesDetails";
 
@@ -21,6 +22,8 @@ const ClothesDetailsContainer = () => {
     const checkAuthorization = () => {
         if (!currentUser) {
             setIsShown(true);
+        }else {
+            dispatch(addToCart({id: clothesData.id, params}));
         }
     }
     const handlePopup = () => {
