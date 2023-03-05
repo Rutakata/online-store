@@ -9,11 +9,8 @@ const ProfileContainer = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(currentUser);
-        if (!currentUser) {
-            navigate('/signin');
-        }
-    }, [currentUser])
+        navigate('/home');
+    }, [])
 
     const handleLogOut = () => {
         navigate('/home');

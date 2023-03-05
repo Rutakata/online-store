@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { BsGoogle } from "react-icons/bs";
 import style from "./Authorization.module.css";
 
 
@@ -9,7 +10,7 @@ const Authorization = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
-    const { logIn } = useAuth();
+    const { logIn, logInWithGoogle } = useAuth();
     const navigate = useNavigate();
 
     const handleEmail = (e) => setEmail(e.target.value);
@@ -31,6 +32,17 @@ const Authorization = () => {
         setLoading(false);
     }
 
+    const handleGoogle = async () => {
+        setLoading(true);
+        try {
+            await logInWithGoogle();
+            navigate('/home')
+        }catch (err) {
+            setError('Failed to sign in');
+        }
+        setLoading(false);
+    }
+
     return <div className={style.wrapper}>
         <h1 className={style.header}>Sign In</h1>
 
@@ -46,6 +58,9 @@ const Authorization = () => {
 
         <p>Don't have account? You can <Link to='/signup'>sign up</Link></p>
         {error ? <p className={style.loginizationForm__errorMessage}>{error}</p> : null}
+        <div className={style.googleAuth}>
+            <BsGoogle onClick={handleGoogle} size={30} />
+        </div>
     </div>
 }
 
