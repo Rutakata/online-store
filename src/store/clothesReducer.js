@@ -5,7 +5,7 @@ import { database } from "../firebase";
 const clothesRef = ref(database, 'clothes');
 
 const initialState = {
-    clothes: [],
+    clothes: {},
     isLoading: false,
     error: null
 }
@@ -20,7 +20,7 @@ export const clothesSlice = createSlice({
 
             get(query).then((snapshot) => {
                 state.clothes = []; 
-                state.clothes.push(...snapshot.val()); 
+                state.clothes = snapshot.val(); 
             })
             state.isLoading = false;
         }
@@ -31,6 +31,7 @@ export const clothesSlice = createSlice({
                 state.isLoading = true;
             })
             .addCase(getAllClothes.fulfilled, (state, action) => {
+                state.clothes = {};
                 state.clothes = action.payload;
                 state.isLoading = false;
             })
@@ -46,7 +47,17 @@ export const getAllClothes = createAsyncThunk('clothes/getAllClothes', async(typ
     if (type === 'all') {
         return snapshot.val();
     }
-    let filteredClothes = snapshot.val().filter(childSnapshot => childSnapshot.sex.includes(type.charAt(0).toUpperCase() + type.slice(1)));
+    // let filteredClothes = snapshot.val().forEach(childSnapshot => {
+    //     if (childSnapshot.sex.includes(type.charAt(0).toUpperCase() + type.slice(1))){
+    //         return childSnapshot;
+    //     }
+    // });
+    let filteredClothes = {} 
+    for (let child in snapshot.val()) {
+        if (snapshot.val()[child].sex.includes(type.charAt(0).toUpperCase() + type.slice(1))){
+            filteredClothes[child] = snapshot.val()[child];
+        }
+    }
     return filteredClothes;
 })
 

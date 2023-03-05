@@ -2,7 +2,6 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { ref, get } from "firebase/database";
 import { database } from "../firebase";
 
-const clothesRef = ref(database, 'clothes');
 
 const initialState = {
     clothesData: null,
@@ -17,7 +16,6 @@ export const currentClothesSlice = createSlice({
     reducers: {
         setParam(state, action) {
             state.params[action.payload.param] = action.payload.value;
-            console.log(action.payload);    
         }
     },
     extraReducers: (builder) => {
@@ -39,10 +37,10 @@ export const currentClothesSlice = createSlice({
 })
 
 export const getClothesById = createAsyncThunk('currentClothes/getClothesById', async (id) => {
-    const snapshot = await get(clothesRef)
-    let currentClothes = snapshot.val().filter((item) => item.id === id);
+    const snapshot = await get(ref(database, `clothes/${id}`))
+    let currentClothes = snapshot.val() 
 
-    return currentClothes[0];
+    return currentClothes;
 })
 
 

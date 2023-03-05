@@ -31,7 +31,6 @@ export const filtersSlice = createSlice({
                 state.sizes = action.payload.sizes;
                 state.types = action.payload.types;
                 state.isLoading = false;
-                console.log(state);
             })
             .addCase(getFilters.rejected, (state, action) => {
                 state.error = action.error.message;

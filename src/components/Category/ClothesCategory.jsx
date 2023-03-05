@@ -9,7 +9,7 @@ const ClothesCategory = ({clothes, isLoading}) => {
         <FilterContainer className={style.container__filterWrapper} />
         {!isLoading ? 
             <div className={style.container__clothesWrapper}>
-                {clothes.map((item) => <ClothesCategoryItem clothesData={item} key={item.name}/>)}
+                {Object.keys(clothes).map((key) => <ClothesCategoryItem clothesData={clothes[key]} key={key}/>)}
             </div>
             : <div>Loading...</div>
         }
