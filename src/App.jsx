@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import ClothesDetailsContainer from "./components/ClothesDetails/ClothesDetailsContainer";
 import ClothesCategoryContainer from "./components/Category/ClothesCategoryContainer";
 import CartContainer from "./components/Cart/CartContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 function App() {
   return (
@@ -22,12 +23,10 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/signin" element={<Authorization />} />
             <Route path="/signup" element={<Registration />} />
-            <Route
-              path="/category/:type"
-              element={<ClothesCategoryContainer />}
-            />
+            <Route path="/category/:type" element={<ClothesCategoryContainer />} />
             <Route path="/product/:id" element={<ClothesDetailsContainer />} />
             <Route path="/cart" element={<CartContainer />} />
+            <Route path="/profile" element={<ProfileContainer />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

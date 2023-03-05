@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    gap: 30px;
+}
+.container__image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.container__userInfo {
+    font-size: 22px;
+}
+.container__userInfo__userName {
+    font-size: 28px;
+}
+.container___logout {
+    width: 150px;
+    height: 40px;
+    background-color: black;
+    color: #fff;
+    margin-top: 30px;
+}
+.container___logout:hover {
+    border: 1px solid black;
+    background-color: #fff;
+    color: #000;
+}
